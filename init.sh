@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory where the scripts are located
-SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+SCRIPT_DIR="$(dirname "$(realpath "$0")")/scripts"
 
 # The initialization code to be added to the shell configuration file
 INIT_CODE="
