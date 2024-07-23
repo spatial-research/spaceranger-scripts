@@ -9,8 +9,8 @@ This repository contains a script to streamline the process of queuing Space Ran
 1. **Clone the Repository:**
 
 ```bash
-git clone https://github.com/yourusername/spaceranger-slurm-queue.git
-cd spaceranger-slurm-queue
+git clone https://github.com/spatial-research/spaceranger-scripts
+cd spaceranger-scripts
 ```
 
 2. **Add script directory to PATH:**
@@ -25,7 +25,8 @@ This will add the following block to your shell profile:
 
 ```bash
 # >>> spaceranger-scripts>>>
-export PATH="$PATH:/path/to/spaceranger-slurm-queue"
+# !! Contents within this block was by 'init.sh' from spaceranger-scripts !!
+export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 # <<< spaceranger-scripts <<<
 ```
 
