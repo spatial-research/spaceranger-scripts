@@ -5,10 +5,9 @@ SCRIPT_DIR="$(dirname "$(realpath "$0")")/scripts"
 
 # The initialization code to be added to the shell configuration file
 INIT_CODE="
-# >>> spaceranger-scripts initialize >>>
-# !! Contents within this block are managed by 'init.sh' from spaceranger-scripts !!
+# >>> spaceranger-scripts >>>
 export PATH=\"\$PATH:$SCRIPT_DIR\"
-# <<< spaceranger-scripts initialize <<<
+# <<< spaceranger-scripts <<<
 "
 
 # Add initialization code to a file if it doesn't already exist

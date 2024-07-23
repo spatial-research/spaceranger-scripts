@@ -4,11 +4,34 @@ This repository contains a script to streamline the process of queuing Space Ran
 
 ## Usage
 
-1. **Clone the Repository:**:
+### Setup
+
+1. **Clone the Repository:**
 
 ```bash
 git clone https://github.com/yourusername/spaceranger-slurm-queue.git
 cd spaceranger-slurm-queue
 ```
 
-2. 
+2. **Add script directory to PATH:**
+
+You can manually add the script directory to your PATH by editing your shell profile (~/.bashrc, ~/.bash_profile, or ~/.zshrc), or use the init.sh script to do it automatically.
+
+```bash
+./init.sh
+```
+
+This will add the following block to your shell profile:
+
+```bash
+# >>> spaceranger-scripts>>>
+export PATH="$PATH:/path/to/spaceranger-slurm-queue"
+# <<< spaceranger-scripts <<<
+```
+
+### Input requirement
+
+
+
+### Running the script
+
