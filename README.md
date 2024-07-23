@@ -15,7 +15,7 @@ cd spaceranger-scripts
 
 2. **Add script directory to PATH:**
 
-You can manually add the script directory to your PATH by editing your shell profile (~/.bashrc, ~/.bash_profile, or ~/.zshrc), or use the init.sh script to do it automatically.
+You can manually add the scripts directory to your PATH by editing your shell profile (~/.bashrc, ~/.bash_profile, or ~/.zshrc), or use the init.sh script to do it automatically.
 
 ```bash
 ./init.sh
@@ -24,9 +24,9 @@ You can manually add the script directory to your PATH by editing your shell pro
 This will add the following block to your shell profile:
 
 ```bash
-# >>> spaceranger-scripts>>>
+# >>> spaceranger-scripts >>>
 # !! Contents within this block was by 'init.sh' from spaceranger-scripts !!
-export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
+export PATH=\"\$PATH:$SCRIPT_DIR\"
 # <<< spaceranger-scripts <<<
 ```
 
