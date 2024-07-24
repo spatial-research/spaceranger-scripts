@@ -7,6 +7,7 @@ TYPE=standard
 SPECIES=human
 ALIGN=auto
 FASTQ=""
+img_path=""
 he_path=""
 cyt_path=""
 output_path=""
@@ -15,15 +16,18 @@ BIN=48
 # Usage function to display help
 usage() {
     echo ""
-    echo "Usage: $0 -t <type> -s <species> -a <alignment> -f <fastq_path> -h <he_img_path> -c <cyt_img_oath> -o <output_path> -b <custom_bin_size>"
+    echo "Usage: $0 -t <type> -s <species> -a <alignment> -f <fastq_path> -i <img_path> -h <he_img_path> -c <cyt_img_oath> -o <output_path> -b <custom_bin_size>"
     echo ""
     echo "-t <type>: Type of sample (standard or hd). Default: standard"
     echo ""
     echo "-s <species>: Species type of sample (human or mouse). Default: human"
     echo ""
     echo "-a <alignment>: auto (Automatic alignment) or manual (Manual alignment). Default: auto"
+    echo "If manual alignment is selected, please provide the alignment file as *alignment.json in the image path (with both images) or CytAssist image path"
     echo ""
     echo "-f <FASTQ>: Path to fastq files"
+    echo ""
+    echo "-i <img_path>: Path to image files if both H&E and CytAssist are in the same location"
     echo ""
     echo "-h <he_img_path>: Path to H&E image files"
     echo ""
@@ -45,7 +49,7 @@ for arg in "$@"; do
 done
 
 # Parse options
-while getopts ":t:s:a:f:h:c:o:b:" opt; do
+while getopts ":t:s:a:f:i:h:c:o:b:" opt; do
     case ${opt} in
     t)
         TYPE=$OPTARG
@@ -58,6 +62,9 @@ while getopts ":t:s:a:f:h:c:o:b:" opt; do
         ;;
     f)
         FASTQ=$OPTARG
+        ;;
+    i)
+        img_path=$OPTARG
         ;;
     h)
         he_path=$OPTARG
@@ -100,9 +107,22 @@ if [ "$ALIGN" != "manual" ] && [ "$ALIGN" != "auto" ]; then
     usage
 fi
 
-# Check if other required variables are set
-if [ -z "$FASTQ" ] || [ -z "$he_path" ] || [ -z "$cyt_path" ] || [ -z "$output_path" ]; then
-    echo "Error: Missing required arguments."
+# Check if fastq variables are set
+if [ -z "$FASTQ" ]; then
+    echo "Error: Missing required arguments fastq."
+    usage
+fi
+
+# Check if img is empty and either he_path or cyt_path is empty
+if [ -z "$img_path" ] && ([ -z "$he_path" ] || [ -z "$cyt_path" ]); then
+    echo "Error: Missing img_path arguments"
+    echo "Please provide either img_path or both he_path and cyt_path"
+    usage
+fi
+
+# Check if output_path is set
+if [ -z "$output_path" ]; then
+    echo "Error: Missing required arguments output_path."
     usage
 fi
 
@@ -112,13 +132,6 @@ if ! [[ "$BIN" =~ ^[0-9]+$ ]] || [ "$BIN" -le 8 ]; then
     usage
 fi
 
-echo "Running the following settings:"
-echo "Type: $TYPE"
-echo "Alignment: $ALIGN"
-echo "FASTQ: $FASTQ"
-echo "Image path: $img_path"
-echo "Output path: $output_path"
-
 sample=$(find "$FASTQ"/V* "$FASTQ"/H* -printf '%f\n' 2>/dev/null | sed 's/_S.*//' | uniq)
 
 if [ -z "$sample" ]; then
@@ -126,21 +139,58 @@ if [ -z "$sample" ]; then
     exit 1
 fi
 
-for ID in $(echo "$sample"); do
-    SLIDE=$(echo "$ID" | sed 's/_.*//')
-    AREA=$(echo "$ID" | sed 's/^.*[^_]*_//')
-    HIRES=${he_path}/${ID}*
-    CYT=${cyt_path}/${ID}*.tif
-    ALIGN_FILE=${cyt_path}/${ID}_alignment.json
+if [ -n "$img_path" ]; then
 
-    echo "Running sample:" $ID
-    echo "Slide ID:" $SLIDE
-    echo "Slide area:" $AREA
+    echo "Running the following settings:"
+    echo "Type: $TYPE"
+    echo "Alignment: $ALIGN"
+    echo "FASTQ: $FASTQ"
+    echo "Image path: $img_path"
+    echo "Output path: $output_path"
 
-    cd $output_path
-    mkdir $ID
-    cd $ID
+    for ID in $(echo "$sample"); do
+        SLIDE=$(echo "$ID" | sed 's/_.*//')
+        AREA=$(echo "$ID" | sed 's/^.*[^_]*_//')
+        HIRES=${img_path}/${ID}_HE.*
+        CYT=${img_path}/${ID}_Cyt.tif
+        ALIGN_FILE=${img_path}/${ID}_alignment.json
 
-    sbatch process_spaceranger.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
-done
+        echo "Running sample:" $ID
+        echo "Slide ID:" $SLIDE
+        echo "Slide area:" $AREA
 
+        cd $output_path
+        mkdir $ID
+        cd $ID
+
+        sbatch process_spaceranger.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
+    done
+
+elif [ -n "$he_path" ] && [ -n "$cyt_path" ]; then
+
+    echo "Running the following settings:"
+    echo "Type: $TYPE"
+    echo "Alignment: $ALIGN"
+    echo "FASTQ: $FASTQ"
+    echo "H&E path: $he_path"
+    echo "CytAssist path: $cyt_path"
+    echo "Output path: $output_path"
+
+    for ID in $(echo "$sample"); do
+        SLIDE=$(echo "$ID" | sed 's/_.*//')
+        AREA=$(echo "$ID" | sed 's/^.*[^_]*_//')
+        HIRES=${he_path}/${ID}*
+        CYT=${cyt_path}/${ID}*.tif
+        ALIGN_FILE=${cyt_path}/${ID}_alignment.json
+
+        echo "Running sample:" $ID
+        echo "Slide ID:" $SLIDE
+        echo "Slide area:" $AREA
+
+        cd $output_path
+        mkdir $ID
+        cd $ID
+
+        sbatch process_spaceranger.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
+    done
+fi
