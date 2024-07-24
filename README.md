@@ -41,9 +41,9 @@ project/
 │   └── ...
 ├── cytassist/
 │   ├── V52L26-037_A.tif
-│   ├── *V52L26-037_A_alignment.json* *(if manual align)*
+│   ├── `<em>V52L26-037_A_alignment.json (if manual align)</em>`
 │   ├── V52L26-037_B.tif
-│   ├── *V52L26-037_B_alignment.json* *(if manual align)*
+│   ├── `<em>V52L26-037_B_alignment.json (if manual align)</em>`
 │   └── ...
 └── spaceranger_out/
 ```
