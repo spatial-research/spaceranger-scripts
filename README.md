@@ -25,7 +25,7 @@ This will add the following block to your shell profile:
 
 ```bash
 # >>> spaceranger-scripts>>>
-# !! Contents within this block was by 'init.sh' from spaceranger-scripts !!
+# !! Contents within this block was added by 'init.sh' from spaceranger-scripts !!
 export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 # <<< spaceranger-scripts <<<
 ```
