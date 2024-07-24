@@ -17,10 +17,10 @@ project/
 ├── imgs/
 │   ├── V52L26-037_A_HE.tif
 │   ├── V52L26-037_A_Cyt.tif
-│   ├── *V52L26-037_A_alignment.json* *(if manual align)*
+│   ├── *V52L26-037_A_alignment.json (if manual align)*
 │   ├── V52L26-037_B_HE.tif
 │   ├── V52L26-037_B_Cyt.tif
-│   ├── *V52L26-037_B_alignment.json* *(if manual align)*
+│   ├── *V52L26-037_B_alignment.json (if manual align)*
 │   └── ...
 └── spaceranger_out/
 ```
@@ -41,9 +41,9 @@ project/
 │   └── ...
 ├── cytassist/
 │   ├── V52L26-037_A.tif
-│   ├── `<em>V52L26-037_A_alignment.json (if manual align)</em>`
+│   ├── *V52L26-037_A_alignment.json (if manual align)*
 │   ├── V52L26-037_B.tif
-│   ├── `<em>V52L26-037_B_alignment.json (if manual align)</em>`
+│   ├── *V52L26-037_B_alignment.json (if manual align)*
 │   └── ...
 └── spaceranger_out/
 ```
