@@ -34,6 +34,7 @@ export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 
 #### One directory for both images
 
+```
 project/ 
 ├── fastq/ 
 │   ├── V52L26-037_A_S1_R1_001.fastq.gz
@@ -50,9 +51,11 @@ project/
 │   ├── *V52L26-037_B_alignment.json* *(if manual align)*
 │   └── ...
 └── spaceranger_out/
+```
 
 #### Seperate directories for images
 
+```
 project/ 
 ├── fastq/ 
 │   ├── V52L26-037_A_S1_R1_001.fastq.gz
@@ -71,11 +74,13 @@ project/
 │   ├── *V52L26-037_B_alignment.json* *(if manual align)*
 │   `── ...
 `── spaceranger_out/
+```
 
 ### Running the script
 
 ## Output example
 
+```
 spaceranger_out/ 
 ├── V52L26-037_A
 |   |-- job-73311.err
@@ -122,4 +127,4 @@ spaceranger_out/
 |       |-- _vdrkill
 |       `-- _versions
 └── ...
-
+```
