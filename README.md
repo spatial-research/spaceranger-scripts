@@ -32,7 +32,7 @@ export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 
 ### Input requirement
 
-
+project-root/ ├── bin/ │ ├── script1.sh │ └── script2.sh ├── data/ │ ├── raw/ │ │ ├── data1.csv │ │ └── data2.csv │ └── processed/ │ ├── data1_processed.csv │ └── data2_processed.csv ├── docs/ │ ├── README.md │ └── manual.pdf ├── src/ │ ├── main.py │ ├── module1.py │ └── module2.py ├── tests/ │ ├── test_main.py │ └── test_module1.py ├── .gitignore ├── requirements.txt └── setup.py
 
 ### Running the script
 
