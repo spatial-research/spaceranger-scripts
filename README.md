@@ -62,18 +62,18 @@ project/
 │   ├── V52L26-037_A_S1_R2_001.fastq.gz
 │   ├── V52L26-037_B_S2_R1_001.fastq.gz
 │   ├── V52L26-037_B_S2_R2_001.fastq.gz
-│   `── ...
+│   └── ...
 ├── he/
 │   ├── V52L26-037_A.tif
 │   ├── V52L26-037_B.tif
-│   `── ...
+│   └── ...
 ├── cytassist/
 │   ├── V52L26-037_A.tif
 │   ├── *V52L26-037_A_alignment.json* *(if manual align)*
 │   ├── V52L26-037_B.tif
 │   ├── *V52L26-037_B_alignment.json* *(if manual align)*
-│   `── ...
-`── spaceranger_out/
+│   └── ...
+└── spaceranger_out/
 ```
 
 ### Running the script
@@ -85,7 +85,7 @@ spaceranger_out/
 ├── V52L26-037_A
 |   |-- job-73311.err
 |   |-- job-73311.out
-|   `-- V52L26-037_A
+|   └-- V52L26-037_A
 |       |-- _cmdline
 |       |-- _filelist
 |       |-- _finalstate
@@ -103,11 +103,11 @@ spaceranger_out/
 |       |-- _uuid
 |       |-- V52L26-037_A.mri.tgz
 |       |-- _vdrkill
-|       `-- _versions
+|       └-- _versions
 ├── V52L26-037_B
 |   |-- job-73312.err
 |   |-- job-73312.out
-|   `-- V52L26-037_B
+|   └-- V52L26-037_B
 |       |-- _cmdline
 |       |-- _filelist
 |       |-- _finalstate
@@ -125,6 +125,6 @@ spaceranger_out/
 |       |-- _uuid
 |       |-- V52L26-037_B.mri.tgz
 |       |-- _vdrkill
-|       `-- _versions
+|       └-- _versions
 └── ...
 ```
