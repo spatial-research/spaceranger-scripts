@@ -12,7 +12,7 @@ if [ -z "$LAUNCH_SCRIPT" ]; then
     exit 1
 fi
 
-module load spaceranger/3.0.0
+module load spaceranger
 
 # Set variables from launch_spaceranger_batch.sh
 SAMPLE=$1
