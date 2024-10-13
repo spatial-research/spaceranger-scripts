@@ -24,8 +24,8 @@ HIRES=$6
 CYT=$7
 SLIDE=$8
 AREA=$9
-ALIGN_FILE=$10
-BIN=$11
+ALIGN_FILE=${10}
+BIN=${11}
 
 echo "Running sample:" $1
 echo "Slide ID:" $8
