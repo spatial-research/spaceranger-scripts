@@ -31,13 +31,14 @@ echo "Running sample:" $1
 echo "Slide ID:" $8
 echo "Slide area:" $9
 
-# Set reference data and probe path
+# Set reference data and probe pathö
 if [ "$SPECIES" == "human" ]; then
     REF=/srv/home/10x.references/refdata-gex-GRCh38-2020-A/
     PROBE=/srv/home/10x.references/CytAssist/Visium_Human_Transcriptome_Probe_Set_v2.0_GRCh38-2020-A.csv
 elif [ "$SPECIES" == "mouse" ]; then
     REF=/srv/home/10x.references/refdata-gex-mm10-2020-A/
     PROBE=/srv/home/10x.references/CytAssist/Visium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.csv
+fi
 
 if [ "$TYPE" == "standard" ]; then
 
@@ -75,8 +76,8 @@ elif [ "$TYPE" == "hd" ]; then
       echo "Running spaceranger human (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
-         --transcriptome=/fastdisk/10x/refdata-gex-GRCh38-2020-A/ \
-         --probe-set=/fastdisk/10x/CytAssist/Visium_Human_Transcriptome_Probe_Set_v2.0_GRCh38-2020-A.csv \
+         --transcriptome=$REF \
+         --probe-set=$PROBE \
          --sample=$SAMPLE \
          --image=$HIRES \
          --cytaimage=$CYT \
@@ -90,8 +91,8 @@ elif [ "$TYPE" == "hd" ]; then
       echo "Running spaceranger human"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
-         --transcriptome=/fastdisk/10x/refdata-gex-GRCh38-2020-A/ \
-         --probe-set=/fastdisk/10x/CytAssist/Visium_Human_Transcriptome_Probe_Set_v2.0_GRCh38-2020-A.csv \
+         --transcriptome=$REF \
+         --probe-set=$PROBE \
          --sample=$SAMPLE \
          --image=$HIRES \
          --cytaimage=$CYT \
