@@ -158,6 +158,7 @@ if [ -n "$img_path" ]; then
         echo "Running sample:" $ID
         echo "Slide ID:" $SLIDE
         echo "Slide area:" $AREA
+        echo "Custom bin size (only used for HD):" $BIN
 
         cd $output_path
         mkdir $ID
@@ -186,6 +187,7 @@ elif [ -n "$he_path" ] && [ -n "$cyt_path" ]; then
         echo "Running sample:" $ID
         echo "Slide ID:" $SLIDE
         echo "Slide area:" $AREA
+        echo "Custom bin size (only used for HD):" $BIN
 
         cd $output_path
         mkdir $ID
