@@ -15,7 +15,7 @@ export PATH=\"\$PATH:$SCRIPT_DIR\"
 add_init_code() {
     local FILE=$1
     if [ -f "$FILE" ]; then
-        if grep -Fxq "$INIT_CODE" "$FILE"; then
+        if grep -q "# >>> spaceranger-scripts >>>" "$FILE"; then
             echo "Initialization code already exists in $FILE"
         else
             echo "Adding initialization code to $FILE"

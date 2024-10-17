@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -N 1 -n 1 -c 20
+#SBATCH -N 1 -n 1 -c 14
 #SBATCH --mem 128000
 #SBATCH -t 12:00:00
 #SBATCH -e job-%J.err

@@ -23,7 +23,7 @@ usage() {
     echo "-s <species>: Species type of sample (human or mouse). Default: human"
     echo ""
     echo "-a <alignment>: auto (Automatic alignment) or manual (Manual alignment). Default: auto"
-    echo "If manual alignment is selected, please provide the alignment file as *alignment.json in the image path (with both images) or CytAssist image path"
+    echo "If manual alignment is selected, please provide the alignment file as *_alignment.json in the image path (with both images) or CytAssist image path"
     echo ""
     echo "-f <FASTQ>: Path to fastq files"
     echo ""
