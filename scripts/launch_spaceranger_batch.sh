@@ -164,7 +164,7 @@ if [ -n "$img_path" ]; then
         mkdir $ID
         cd $ID
 
-        sbatch process_spaceranger.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
+        sbatch process_spaceranger_run.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
     done
 
 elif [ -n "$he_path" ] && [ -n "$cyt_path" ]; then
@@ -193,6 +193,6 @@ elif [ -n "$he_path" ] && [ -n "$cyt_path" ]; then
         mkdir $ID
         cd $ID
 
-        sbatch process_spaceranger.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
+        sbatch process_spaceranger_run.sh $ID $TYPE $SPECIES $ALIGN $FASTQ $HIRES $CYT $SLIDE $AREA $ALIGN_FILE $BIN
     done
 fi
