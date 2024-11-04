@@ -40,10 +40,10 @@ elif [ "$SPECIES" == "mouse" ]; then
     PROBE=/srv/home/10x.references/CytAssist/Visium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.csv
 fi
 
-if [ "$TYPE" == "standard" ]; then
+if [ "$TYPE" == "ffpe" ]; then
 
    if [ "$ALIGN" == "manual" ]; then
-      echo "Running spaceranger human (manual align)"
+      echo "Running spaceranger ffpe (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -57,7 +57,7 @@ if [ "$TYPE" == "standard" ]; then
          --loupe-alignment=$ALIGN_FILE
 
    elif [ "$ALIGN" == "auto" ]; then
-      echo "Running spaceranger human"
+      echo "Running spaceranger ffpe"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -73,7 +73,7 @@ if [ "$TYPE" == "standard" ]; then
 elif [ "$TYPE" == "hd" ]; then
 
    if [ "$ALIGN" == "manual" ]; then
-      echo "Running spaceranger human (manual align)"
+      echo "Running spaceranger hd (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -88,7 +88,7 @@ elif [ "$TYPE" == "hd" ]; then
          --loupe-alignment=$ALIGN_FILE
 
    elif [ "$ALIGN" == "auto" ]; then
-      echo "Running spaceranger human"
+      echo "Running spaceranger hd"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -100,6 +100,33 @@ elif [ "$TYPE" == "hd" ]; then
          --area=$AREA \
          --create-bam=false \
          --custom-bin-size=$BIN
+   fi
+
+elif [ "$TYPE" == "ff" ]; then
+
+   if [ "$ALIGN" == "manual" ]; then
+      echo "Running spaceranger ff (manual align)"
+      spaceranger count --id=$SAMPLE \
+         --fastqs=$FASTQ \
+         --transcriptome=$REF \
+         --sample=$SAMPLE \
+         --image=$HIRES \
+         --slide=$SLIDE \
+         --area=$AREA \
+         --create-bam=false \
+         --loupe-alignment=$ALIGN_FILE
+
+   elif [ "$ALIGN" == "auto" ]; then
+      echo "Running spaceranger ff"
+      spaceranger count --id=$SAMPLE \
+         --fastqs=$FASTQ \
+         --transcriptome=$REF \
+         --sample=$SAMPLE \
+         --image=$HIRES \
+         --slide=$SLIDE \
+         --area=$AREA \
+         --create-bam=false
+
    fi
 
 fi

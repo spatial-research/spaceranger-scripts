@@ -3,7 +3,7 @@
 export LAUNCH_SCRIPT="launch_spaceranger_sbatch.sh"
 
 # # Initialize variables
-TYPE=standard
+TYPE=""
 SPECIES=human
 ALIGN=auto
 FASTQ=""
@@ -18,7 +18,7 @@ usage() {
     echo ""
     echo "Usage: $0 -t <type> -s <species> -a <alignment> -f <fastq_path> -i <img_path> -h <he_img_path> -c <cyt_img_oath> -o <output_path> -b <custom_bin_size>"
     echo ""
-    echo "-t <type>: Type of sample (standard or hd). Default: standard"
+    echo "-t <type>: Type of sample (ff, ffpe or hd)"
     echo ""
     echo "-s <species>: Species type of sample (human or mouse). Default: human"
     echo ""
@@ -90,7 +90,7 @@ while getopts ":t:s:a:f:i:h:c:o:b:" opt; do
 done
 
 # Check if type option is valid
-if [ "$TYPE" != "standard" ] && [ "$TYPE" != "hd" ]; then
+if [ "$TYPE" != "standard" ] && [ "$TYPE" != "hd" ] && [ "$TYPE" != "FF" ]; then
     echo "Error: Invalid type option provided: $TYPE"
     usage
 fi
