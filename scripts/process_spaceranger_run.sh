@@ -43,7 +43,7 @@ fi
 if [ "$TYPE" == "ffpe" ]; then
 
    if [ "$ALIGN" == "manual" ]; then
-      echo "Running spaceranger ffpe (manual align)"
+      echo "Running spaceranger FFPE (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -57,7 +57,7 @@ if [ "$TYPE" == "ffpe" ]; then
          --loupe-alignment=$ALIGN_FILE
 
    elif [ "$ALIGN" == "auto" ]; then
-      echo "Running spaceranger ffpe"
+      echo "Running spaceranger FFPE"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -73,7 +73,7 @@ if [ "$TYPE" == "ffpe" ]; then
 elif [ "$TYPE" == "hd" ]; then
 
    if [ "$ALIGN" == "manual" ]; then
-      echo "Running spaceranger hd (manual align)"
+      echo "Running spaceranger HD (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -88,7 +88,7 @@ elif [ "$TYPE" == "hd" ]; then
          --loupe-alignment=$ALIGN_FILE
 
    elif [ "$ALIGN" == "auto" ]; then
-      echo "Running spaceranger hd"
+      echo "Running spaceranger HD"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -104,8 +104,10 @@ elif [ "$TYPE" == "hd" ]; then
 
 elif [ "$TYPE" == "ff" ]; then
 
+   HIRES="${HIRES/_HE/}"
+
    if [ "$ALIGN" == "manual" ]; then
-      echo "Running spaceranger ff (manual align)"
+      echo "Running spaceranger FF (manual align)"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \
@@ -117,7 +119,7 @@ elif [ "$TYPE" == "ff" ]; then
          --loupe-alignment=$ALIGN_FILE
 
    elif [ "$ALIGN" == "auto" ]; then
-      echo "Running spaceranger ff"
+      echo "Running spaceranger FF"
       spaceranger count --id=$SAMPLE \
          --fastqs=$FASTQ \
          --transcriptome=$REF \

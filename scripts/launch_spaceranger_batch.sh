@@ -27,7 +27,7 @@ usage() {
     echo ""
     echo "-f <FASTQ>: Path to fastq files"
     echo ""
-    echo "-i <img_path>: Path to image files if both H&E and CytAssist are in the same location"
+    echo "-i <img_path>: Path to image files if both H&E and CytAssist are in the same location (use this for ff)"
     echo ""
     echo "-h <he_img_path>: Path to H&E image files"
     echo ""
