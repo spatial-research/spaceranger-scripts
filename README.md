@@ -28,11 +28,36 @@ export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 # <<< spaceranger-scripts <<<
 ```
 
-## Input requirement
+## Input naming requirement
+
+### FF
+
+```
+project/ 
+├── fastq/ 
+│   ├── V13Y08-062_A1_S1_R1_001.fastq.gz
+│   ├── V13Y08-062_A1_S1_R2_001.fastq.gz
+│   ├── V13Y08-062_B1_S2_R1_001.fastq.gz
+│   ├── V13Y08-062_B1_S2_R2_001.fastq.gz
+│   ├── V13Y08-062_C1_S3_R1_001.fastq.gz
+│   ├── V13Y08-062_C1_S3_R2_001.fastq.gz
+│   ├── V13Y08-062_D1_S4_R1_001.fastq.gz
+│   ├── V13Y08-062_D1_S4_R2_001.fastq.gz
+│   └── ...
+├── imgs/
+│   ├── V13Y08-062_A1.tif (or .jpg)
+│   ├── V13Y08-062_A1_alignment.json *(if manual align)*
+│   ├── V13Y08-062_B1.tif (or .jpg)
+│   ├── V13Y08-062_B1_alignment.json *(if manual align)*
+│   ├── V13Y08-062_C1.tif (or .jpg)
+│   ├── V13Y08-062_C1_alignment.json *(if manual align)*
+│   ├── V13Y08-062_D1.tif (or .jpg)
+│   ├── V13Y08-062_D1_alignment.json *(if manual align)*
+│   └── ...
+└── spaceranger_out/
+```
 
 ### FFPE
-
-One directory for both images
 
 ```
 # One directory for both images
@@ -78,6 +103,26 @@ project/
 
 ## Usage
 
+### Help
+
+```
+launch_spaceranger_batch.sh -h
+```
+
+### Example runs
+
+IMPORTANT: Use -i option for image directory when running regular poly-A Visium V1
+
+```
+# FF with automatic alignment
+launch_spaceranger_batch.sh -t ff -a auto -f ~/project/fastq -i ~/porject/imgs -o ~/project/spaceranger_out
+
+# FFPE with manual alignment and common folder for images
+launch_spaceranger_batch.sh -t ffpe -a manual -f ~/project/fastq -i ~/porject/imgs -o ~/project/spaceranger_out
+
+# HD with seperate folders for images, manual alignment and custom bin size of 24
+launch_spaceranger_batch.sh -t hd -a manual -f ～/project/fastq -h ~/project/he -c ~/project/cytassist -o ~/project/spaceranger_out -b 24
+```
 
 ## Output example
 
