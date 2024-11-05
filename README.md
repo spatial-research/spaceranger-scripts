@@ -57,7 +57,7 @@ project/
 └── spaceranger_out/
 ```
 
-### FFPE
+### FFPE and HD
 
 ```
 # One directory for both images
