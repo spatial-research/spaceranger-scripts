@@ -2,55 +2,7 @@
 
 This repository contains a script to streamline the process of queuing Space Ranger jobs for multiple samples on a SLURM-based high-performance computing (HPC) cluster. Space Ranger (10x Genomics) used for processing Visium spatial gene expression data.
 
-## Input requirement
-
-### One directory for both images
-
-```
-project/ 
-├── fastq/ 
-│   ├── V52L26-037_A_S1_R1_001.fastq.gz
-│   ├── V52L26-037_A_S1_R2_001.fastq.gz
-│   ├── V52L26-037_B_S2_R1_001.fastq.gz
-│   ├── V52L26-037_B_S2_R2_001.fastq.gz
-│   └── ...
-├── imgs/
-│   ├── V52L26-037_A_HE.tif
-│   ├── V52L26-037_A_Cyt.tif
-│   ├── V52L26-037_A_alignment.json *(if manual align)*
-│   ├── V52L26-037_B_HE.tif
-│   ├── V52L26-037_B_Cyt.tif
-│   ├── V52L26-037_B_alignment.json *(if manual align)*
-│   └── ...
-└── spaceranger_out/
-```
-
-### Seperate directories for images
-
-```
-project/ 
-├── fastq/ 
-│   ├── V52L26-037_A_S1_R1_001.fastq.gz
-│   ├── V52L26-037_A_S1_R2_001.fastq.gz
-│   ├── V52L26-037_B_S2_R1_001.fastq.gz
-│   ├── V52L26-037_B_S2_R2_001.fastq.gz
-│   └── ...
-├── he/
-│   ├── V52L26-037_A.tif
-│   ├── V52L26-037_B.tif
-│   └── ...
-├── cytassist/
-│   ├── V52L26-037_A.tif
-│   ├── V52L26-037_A_alignment.json *(if manual align)*
-│   ├── V52L26-037_B.tif
-│   ├── V52L26-037_B_alignment.json *(if manual align)*
-│   └── ...
-└── spaceranger_out/
-```
-
-## Usage
-
-### Setup
+## Setup
 
 1. **Clone the Repository:**
 
@@ -76,7 +28,56 @@ export PATH="$PATH:/path/to/spaceranger-scripts/scripts"
 # <<< spaceranger-scripts <<<
 ```
 
-### Running the script
+## Input requirement
+
+### FFPE
+
+One directory for both images
+
+```
+# One directory for both images
+
+project/ 
+├── fastq/ 
+│   ├── V52L26-037_A_S1_R1_001.fastq.gz
+│   ├── V52L26-037_A_S1_R2_001.fastq.gz
+│   ├── V52L26-037_B_S2_R1_001.fastq.gz
+│   ├── V52L26-037_B_S2_R2_001.fastq.gz
+│   └── ...
+├── imgs/
+│   ├── V52L26-037_A_HE.tif
+│   ├── V52L26-037_A_Cyt.tif
+│   ├── V52L26-037_A_alignment.json *(if manual align)*
+│   ├── V52L26-037_B_HE.tif
+│   ├── V52L26-037_B_Cyt.tif
+│   ├── V52L26-037_B_alignment.json *(if manual align)*
+│   └── ...
+└── spaceranger_out/
+
+# Seperate directories for images
+
+project/ 
+├── fastq/ 
+│   ├── V52L26-037_A_S1_R1_001.fastq.gz
+│   ├── V52L26-037_A_S1_R2_001.fastq.gz
+│   ├── V52L26-037_B_S2_R1_001.fastq.gz
+│   ├── V52L26-037_B_S2_R2_001.fastq.gz
+│   └── ...
+├── he/
+│   ├── V52L26-037_A.tif
+│   ├── V52L26-037_B.tif
+│   └── ...
+├── cytassist/
+│   ├── V52L26-037_A.tif
+│   ├── V52L26-037_A_alignment.json *(if manual align)*
+│   ├── V52L26-037_B.tif
+│   ├── V52L26-037_B_alignment.json *(if manual align)*
+│   └── ...
+└── spaceranger_out/
+```
+
+## Usage
+
 
 ## Output example
 
