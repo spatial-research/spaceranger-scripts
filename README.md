@@ -2,6 +2,8 @@
 
 This repository contains a script to streamline the process of queuing Space Ranger jobs for multiple samples on a SLURM-based high-performance computing (HPC) cluster. Space Ranger (10x Genomics) used for processing Visium spatial gene expression data.
 
+By default the --create-bam is set to false to save disk space.
+
 ## Setup
 
 1. **Clone the Repository:**
